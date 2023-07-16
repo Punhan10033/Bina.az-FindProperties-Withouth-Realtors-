@@ -95,7 +95,7 @@ namespace Wdwadwa
             var baseUrl = "https://bina.az/alqi-satqi/menziller";
             var web = new HtmlWeb();
             //
-            string con = "Server=localhost;Database=ForConsoleAppEstate;Trusted_Connection=True;MultipleActiveResultSets=true";
+            string con = "Server Info";
             SqlConnection consql = new SqlConnection(con);
             consql.Open();
             using (SqlCommand command = new SqlCommand("Select * from Emlaklar", consql))
@@ -311,46 +311,7 @@ namespace Wdwadwa
 
         }
 
-        public static int getTotalX(string n, int k)
-        {
-            string concateds = string.Concat(Enumerable.Repeat(n, k).ToArray());
-            int[] arr = new int[n.Length * k];
-            arr = concateds.Select(x => int.Parse(x.ToString())).ToArray();
-            do
-            {
-                if (arr.Sum() > 9)
-                {
-                    arr = arr.Sum().ToString().Select(x => int.Parse(x.ToString())).ToArray();
-                }
-                else
-                {
-                    return arr.Sum();
-                }
-            }
-            while (true);
-        }
-        public static int superDigit(string n, int k)
-        {
-            int sum = 0;
-            var cr = n.ToCharArray();
-            var arr = new int[k];
-            do
-            {
-                for (int i = 0; i < k; i++)
-                {
-                    arr[i] = int.Parse(cr[i].ToString());
-                    sum += arr[i];
-                }
-                if (sum.ToString().Length > 1)
-                {
-                    cr = sum.ToString().ToCharArray();
-                    //1-2
-                    arr = new int[cr.Count() * k];
-                    sum = 0;
-                }
-            } while (sum.ToString().Length < 2);
-            return sum;
-        }
+      
         static bool GetIsVasiteci(string itemLink)
         {
             var web = new HtmlWeb();
